@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>game</title>
+<button id="reset">reset</button>    
+<button id="start">start</button>    
+<style>
+    canvas {background: limegreen}
+    #start {
+    position: absolute;
+    left: 800px;
+    top: 125px;
+    width:85px;
+	height:85px;
+	background:#fafafa;
+	box-shadow:2px 2px 8px #aaa;
+	font:bold 13px Arial;
+	border-radius:50%;
+	color:#555;
+}
+#reset {
+    position: absolute;
+    left: 875px;
+    top: 200px;
+    width:85px;
+	height:85px;
+	background:#fafafa;
+	box-shadow:2px 2px 8px #aaa;
+	font:bold 13px Arial;
+	border-radius:50%;
+	color:#555;
+}
+</style>
+<div id="MaDiv"></div>
+<canvas id="myCanvas" width="600" height="600">
+</canvas>
+<script>
+  function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+  var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+var start = 0;
+  var a = 1;
+  var x = 250;
+  var y = 500;
+  var v =1;
+var xm = getRandomInt(11)*50;
+var xm = getRandomInt(11)*50;
+var ym = 0;
+var temp = 0;
+var perdu = 0;
+  function draw() {
+    ctx.fillStyle = "dark";
+ctx.fillRect(x, y, 50, 50);
+if (a===1) {
+    ctx.fillRect(xm, ym, 50, 50);
+    if (v === 4) {
+      ctx.fillRect(xm2, ym, 50, 50);
+    }
+     };
+  }
+  function drawMeteor() {
+    if (perdu === 0) {
+    if (a===1) {
+    ctx.clearRect(xm, ym, 50, 50);
+    ctx.clearRect(xm2, ym, 50, 50);
+    ym += v;
+    xm  
+     }};
+  };
+  function stop() {
+if (ym > 600) {
+  ym -= ym;
+  xm = getRandomInt(11)*50;
+  xm2 = getRandomInt(11)*50;
+  if (v<4) {
+  v += 1;
+}};
+  };
+  setInterval(drawMeteor,10);
+  setInterval(draw,10);
+  setInterval(stop,100);
+  setInterval(perdre,1);
+function perdre() {
+if (xm===x && ym===y) {
+  perdu=1;
+}
+for (let i = 0; i < buttons.length; i++){
+buttons[i].addEventListener("click", function() {
+const bouttona = buttons[i].innerHTML
+if (buttona ==="start") {
+start = 1;
+}
+if (buttona ==="reset") {
+  ym = 700;
+  perdu = 0;
+}
+});
+}
+};
+
+  document.addEventListener("keydown",keyPush);
+function keyPush(evt) {
+    switch(evt.keyCode) {
+        case 37:
+        if (perdu === 0) {
+        ctx.clearRect(x, y, 50, 50);
+            x-=50;
+    };
+            break;
+        case 38:
+        if (perdu === 0) {
+        ctx.clearRect(x, y, 50, 50);
+            y-=50;
+  };
+            break;
+        case 39:
+        if (perdu === 0) {
+        ctx.clearRect(x, y, 50, 50);
+            x+=50;;
+};
+            break;
+        case 40:
+        if (perdu === 0) {
+        ctx.clearRect(x, y, 50, 50);
+          y+=50;
+};
+            break;
+    }
+}
+
+</script>
+</head>
+    
+<body onload="init();">
+    
+</body>
+</html>
